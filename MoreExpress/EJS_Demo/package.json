@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Nikolas9896/web_developer_boot_camp#readme",
   "dependencies": {
+    "ejs": "^2.7.1",
     "express": "^4.17.1"
   }
 }
