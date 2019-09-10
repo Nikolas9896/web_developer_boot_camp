@@ -1,0 +1,23 @@
+{
+  "name": "ejs_demo",
+  "version": "1.0.0",
+  "description": "file for list of required packages",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikolas9896/web_developer_boot_camp.git"
+  },
+  "keywords": [
+    "EJS_DEMO",
+    "Express"
+  ],
+  "author": "Mykola Hlynka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikolas9896/web_developer_boot_camp/issues"
+  },
+  "homepage": "https://github.com/Nikolas9896/web_developer_boot_camp#readme"
+}
