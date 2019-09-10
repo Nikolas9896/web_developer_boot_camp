@@ -1,2 +1,7 @@
-<h1>You fell in love with: <%= thingVar %></h1>
+<h1>You fell in love with: <%= thingVar.toUpperCase() %></h1>
+<% if(thingVar.toLowerCase() === "jane") { %>
+    <p>It's the best DOG!</p>
+<% } else { %>
+    <p>Try to choose Jane</p>
+<% } %>    
 <p>P.S. This is the love!</p>
