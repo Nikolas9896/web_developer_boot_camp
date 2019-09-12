@@ -17,7 +17,7 @@ app.get("/results", (req, res) => {
          var data = JSON.parse(body)
          res.render("results", {data: data});
          //res.send(results["Search"][0]["Title"]);
-     }   
+     }
     });
 });
 
