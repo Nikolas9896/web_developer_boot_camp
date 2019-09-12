@@ -6,7 +6,8 @@ var request = require("request");
 app.get("/results", (req, res) => {
     request("http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb", (error, response, body) => {
      if(!error && response.statusCode == 200){
-         res.send(body);
+         var results = JSON.parse(body)
+         res.send(results["Search"][0]);
      }   
     });
 });
