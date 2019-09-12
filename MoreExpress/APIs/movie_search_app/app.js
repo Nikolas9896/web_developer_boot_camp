@@ -4,7 +4,11 @@ var app = express();
 var request = require("request");
 
 app.get("/results", (req, res) => {
-    res.send("hello, it works")
+    request("http://www.omdbapi.com/?s=guardians+of+the+galaxy&apikey=thewdb", (error, response, body) => {
+     if(!error && response.statusCode == 200){
+         res.send(body);
+     }   
+    });
 });
 
 
