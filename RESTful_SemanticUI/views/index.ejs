@@ -1,3 +1,14 @@
 <h1>Index Page!</h1>
 
-<%= mykos %>
+<% mykos.forEach((myko) => { %>
+
+    <div>
+        <h2><%= myko.title %></h2>
+        <img src="<%= myko.image %>">
+        <span><%= myko.created %></span>
+        <p><%= myko.body %></p>
+
+    </div>
+
+
+<% }); %>
