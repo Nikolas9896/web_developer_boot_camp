@@ -17,7 +17,9 @@ var mykoSchem = new mongoose.Schema({
 var Myko = mongoose.model("Myko", mykoSchem);
 
 //RESTful ROUTES
-
+app.get("/mykos", (req, res) => {
+    res.render("index");
+});
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
