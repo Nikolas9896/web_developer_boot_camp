@@ -17,8 +17,17 @@ var mykoSchem = new mongoose.Schema({
 var Myko = mongoose.model("Myko", mykoSchem);
 
 //RESTful ROUTES
+app.get("/", (req, res) => {
+    res.redirect("/mykos");
+});
 app.get("/mykos", (req, res) => {
-    res.render("index");
+    Myko.find({},(err, mykos) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.render("index", {mykos: mykos});
+        }
+    });
 });
 
 app.listen(3000, () => {
