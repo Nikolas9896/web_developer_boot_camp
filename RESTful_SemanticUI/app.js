@@ -29,6 +29,12 @@ app.get("/mykos", (req, res) => {
         }
     });
 });
+//NEW ROUTE
+    app.get("/mykos/new", (req, res) => {
+        res.render("new");
+    });
+//CREATE ROUTE
+
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
