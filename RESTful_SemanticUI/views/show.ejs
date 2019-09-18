@@ -1,7 +1,17 @@
 <% include partials/header %>
 <div class="ui main text container segment">
     <div class="ui huge header"><%= myko.title %></div>
-    
+    <div class="ui top attached segment">
+        <div class="item">
+            <img class="ui centered rounded image" src="<%= myko.image%>">
+            <div class="content">
+                <span><%= myko.created.toDateString() %></span>
+            </div>
+            <div class="description">
+                <p><%= myko.body %></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 
