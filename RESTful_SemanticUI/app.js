@@ -36,15 +36,27 @@ app.get("/mykos", (req, res) => {
 //CREATE ROUTE
 app.post("/mykos", (req, res) => {
     //create blog
-    Myko.create(req.body.mykos, (err, newMyko) => {
+    Myko.create(req.body.myko, (err, newMyko) => {
         if(err){
             console.log(err);
             res.render("new");
         } else {
+            //then, redirect
             res.redirect("/mykos");
         }
     });
-    //then, redirect
+    
+});
+
+//SHOW ROUTE
+app.get("/mykos/:id", (req, res) => {
+    Myko.findById(req.params.id, (err, foundMyko) => {
+        if(err){
+            res.redirect("/mykos");
+        } else {
+            res.render("show", {myko: foundMyko});
+        }
+    });
 });
 
 app.listen(3000, () => {
