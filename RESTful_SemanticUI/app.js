@@ -34,7 +34,18 @@ app.get("/mykos", (req, res) => {
         res.render("new");
     });
 //CREATE ROUTE
-
+app.post("/mykos", (req, res) => {
+    //create blog
+    Myko.create(req.body.mykos, (err, newMyko) => {
+        if(err){
+            console.log(err);
+            res.render("new");
+        } else {
+            res.redirect("/mykos");
+        }
+    });
+    //then, redirect
+});
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
