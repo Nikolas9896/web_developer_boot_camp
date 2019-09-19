@@ -7,7 +7,7 @@
         <h2><%= myko.title %></h2>
         <img src="<%= myko.image %>">
         <span><%= myko.created %></span>
-        <p><%= myko.body %>...</p>
+        <p><%= myko.body.substring(0, 100) %>...</p>
         <a class="ui blue basic button" href="/mykos/<%= myko._id %>">Read More</a>
     </div>
 
