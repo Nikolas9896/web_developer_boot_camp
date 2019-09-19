@@ -1,4 +1,5 @@
 var bodyParser  = require("body-parser"),
+    methodOverride = require("method-override"),
     mongoose    = require("mongoose"),
     express     = require("express"),
     app         = express();
@@ -7,6 +8,7 @@ mongoose.connect("mongodb://localhost:27017/mykogram", {useNewUrlParser: true});
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 //MONGOOSE/MODEL CONFIGURATION
 var mykoSchem = new mongoose.Schema({
     title: String,
@@ -69,6 +71,10 @@ app.get("/mykos/:id/edit", (req, res) => {
     });
 });
 
+//UPDATE ROUTE
+app.put("/mykos/:id", (req, res) => {
+    res.send("Update ROUTE!");
+});
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
