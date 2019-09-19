@@ -73,7 +73,13 @@ app.get("/mykos/:id/edit", (req, res) => {
 
 //UPDATE ROUTE
 app.put("/mykos/:id", (req, res) => {
-    res.send("Update ROUTE!");
+    Myko.findByIdAndUpdate(req.params.id, req.body.myko, (err, updatedMyko) => {
+        if(err){
+            res.redirect("/mykos");
+        } else {
+            res.redirect("/mykos/" + req.params.id);
+        }
+    });
 });
 
 app.listen(3000, () => {
