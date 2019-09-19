@@ -58,6 +58,17 @@ app.get("/mykos/:id", (req, res) => {
         }
     });
 });
+// EDIT ROUTE
+app.get("/mykos/:id/edit", (req, res) => {
+    Myko.findById(req.params.id, (err, foundMyko) => {
+        if(err){
+            res.redirect("/mykos");
+        } else {
+          res.render("edit",{myko: foundMyko});
+        }
+    });
+});
+
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
