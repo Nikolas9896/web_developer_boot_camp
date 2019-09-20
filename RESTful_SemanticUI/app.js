@@ -1,8 +1,8 @@
-var bodyParser  = require("body-parser"),
-    methodOverride = require("method-override"),
-    mongoose    = require("mongoose"),
-    express     = require("express"),
-    app         = express();
+var bodyParser      = require("body-parser"),
+    methodOverride  = require("method-override"),
+    mongoose        = require("mongoose"),
+    express         = require("express"),
+    app             = express();
 //APP CONFIGURATION
 mongoose.connect("mongodb://localhost:27017/mykogram", {useNewUrlParser: true});
 app.set("view engine", "ejs");
@@ -81,6 +81,19 @@ app.put("/mykos/:id", (req, res) => {
         }
     });
 });
+// DELETE ROUTE
+app.delete("/mykos/:id", (req, res) => {
+    //destroy myko
+    Myko.findByIdAndRemove(req.params.id, (err) => {
+        if(err){
+            res.redirect("/mykos");
+        } else {
+            res.redirect("/mykos");
+        }
+    });
+    
+});
+
 
 app.listen(3000, () => {
     console.log("The mykogram Server has started!");
