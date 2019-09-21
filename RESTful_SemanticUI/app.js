@@ -40,7 +40,7 @@ app.get("/mykos", (req, res) => {
 //CREATE ROUTE
 app.post("/mykos", (req, res) => {
     //create blog
-    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple stile tags.
+    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple style tags.
     Myko.create(req.body.myko, (err, newMyko) => {
         if(err){
             console.log(err);
@@ -76,7 +76,7 @@ app.get("/mykos/:id/edit", (req, res) => {
 
 //UPDATE ROUTE
 app.put("/mykos/:id", (req, res) => {
-    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple stile tags.
+    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple style tags.
     Myko.findByIdAndUpdate(req.params.id, req.body.myko, (err, updatedMyko) => {
         if(err){
             res.redirect("/mykos");
