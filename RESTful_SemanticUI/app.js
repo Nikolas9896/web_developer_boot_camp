@@ -1,13 +1,15 @@
-var bodyParser      = require("body-parser"),
-    methodOverride  = require("method-override"),
-    mongoose        = require("mongoose"),
-    express         = require("express"),
-    app             = express();
+var bodyParser          = require("body-parser"),
+    methodOverride      = require("method-override"),
+    expressSanitizer    = require("express-sanitizer"),
+    mongoose            = require("mongoose"),
+    express             = require("express"),
+    app                 = express();
 //APP CONFIGURATION
 mongoose.connect("mongodb://localhost:27017/mykogram", {useNewUrlParser: true});
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 //MONGOOSE/MODEL CONFIGURATION
 var mykoSchem = new mongoose.Schema({
@@ -38,6 +40,7 @@ app.get("/mykos", (req, res) => {
 //CREATE ROUTE
 app.post("/mykos", (req, res) => {
     //create blog
+    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple stile tags.
     Myko.create(req.body.myko, (err, newMyko) => {
         if(err){
             console.log(err);
@@ -73,6 +76,7 @@ app.get("/mykos/:id/edit", (req, res) => {
 
 //UPDATE ROUTE
 app.put("/mykos/:id", (req, res) => {
+    req.body.myko.body = req.sanitize(req.body.myko.body); //sanitize code from bad script tag and save simple stile tags.
     Myko.findByIdAndUpdate(req.params.id, req.body.myko, (err, updatedMyko) => {
         if(err){
             res.redirect("/mykos");
