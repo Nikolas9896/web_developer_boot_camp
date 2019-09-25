@@ -73,7 +73,11 @@ app.post('/login', passport.authenticate("local", {
 }) , (req, res) => {
 
 });
-
+//logout
+app.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+});
 
 app.listen(3000, () => {
     console.log("The AuthDemo Server has started!");
