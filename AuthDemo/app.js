@@ -35,6 +35,15 @@ app.get('/secret', (req, res) => {
 
 });
 
+//Auth Route
+
+//show sign up form
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+app.post('/register', (req, res) => {
+    res.send("REGISTER POST ROUTE!");
+});
 
 app.listen(3000, () => {
     console.log("The AuthDemo Server has started!");
