@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost:27017/auth_demo_app", {useNewUrlParser: tr
 
 var app = express();
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(require("express-session")({
     secret: "Danylo is the best and cutest son in the world",
     resave: false,
@@ -42,7 +43,18 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 app.post('/register', (req, res) => {
-    res.send("REGISTER POST ROUTE!");
+    req.body.username
+    req.body.password
+    User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
+        if(err){
+            console.log(err.message);
+            return res.render('register');
+        } 
+            passport.authenticate("local") (req, res, () => {
+                res.redirect('/secret');
+            });
+    
+    });
 });
 
 app.listen(3000, () => {
